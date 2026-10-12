@@ -24,14 +24,21 @@ void XestionadorPeticionsAutenticar::login(const httplib::Request &req, httplib:
 {
     Usuario u = fs.obterUsuarioPeticion(req.get_header_value("Authorization"));
 
-    if(fs.getConexions().contains(u.getNomeUsuario().value()))
+    try
+    {
+        // TODO: Actualizar a .contains() en C++20
+        fs.getConexions().at(u.getNomeUsuario().value());
+        // Non debería pasar
         throw ErroAutentificacion();
+    }
+    catch (const std::out_of_range& e)
+    {}
 
     try
     {
         fs.getConexions().insert({u.getNomeUsuario().value(), Sesion(dsn, u)});
     }
-    catch (nanodbc::database_error& e)
+    catch (const nanodbc::database_error& e)
     {
         if(std::string_view(e.what()).find(credenciaisIncorrectas) == std::string::npos)
             throw e;

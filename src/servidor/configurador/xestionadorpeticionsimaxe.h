@@ -116,7 +116,7 @@ private:
 
             if (file.name == "json" && (file.content_type == "application/octet-stream" || file.content_type == "application/json"))
                 serValorjson = true;
-            else if (file.name == "imaxe" && file.content_type.starts_with("image/"))
+            else if (file.name == "imaxe" && (file.content_type == "image/png" || file.content_type == "image/jpeg"))
             {
                 serImaxe = true;
                 mimeImaxe = file.content_type;
