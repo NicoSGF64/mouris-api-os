@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.19)
-project(mourisapios VERSION 0.1 LANGUAGES CXX)
+project(mourisapios VERSION 1.0 LANGUAGES CXX)
 
 add_compile_definitions(DEBUG)
 
@@ -16,9 +16,11 @@ target_include_directories(ponte INTERFACE
     ${CMAKE_SOURCE_DIR}/src/baseDatos
     ${CMAKE_SOURCE_DIR}/src/servidor
     ${CMAKE_SOURCE_DIR}/src/lib/nanodbc
+    ${CMAKE_SOURCE_DIR}/src/lib/cppcodec
 )
 
 add_subdirectory(src/lib/nanodbc)
+add_subdirectory(src/lib/cppcodec)
 add_subdirectory(src/comun)
 add_subdirectory(src/baseDatos)
 add_subdirectory(src/servidor)
@@ -29,6 +31,7 @@ target_link_libraries(mourisapios
     backendMourisapios
     servidorMourisapios
     nanodbc
+    cppcodec
     OpenSSL::SSL
     OpenSSL::Crypto)
 
