@@ -52,3 +52,5 @@ if (DOXYGEN_FOUND)
 else (DOXYGEN_FOUND)
   message("Falta a instalación de DOxygen")
 endif (DOXYGEN_FOUND)
+
+install(TARGETS mourisapios)
