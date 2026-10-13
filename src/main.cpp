@@ -6,11 +6,11 @@
 
 int main(int argc, char *argv[])
 {
-    ParseadorLineaComandos parseador;
     OpcionsPrograma opcions;
 
     try
     {
+        ParseadorLineaComandos parseador;
         opcions = parseador.obterOpcions(argc, argv);
     }
     catch (ErroSenParametroEsencial&)
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    FachadaServidor servidor(opcions.rutaCertificado, opcions.rutaChave);
+    FachadaServidor servidor = opcions.porto ? FachadaServidor(opcions.rutaCertificado, opcions.rutaChave, *opcions.porto) : FachadaServidor(opcions.rutaCertificado, opcions.rutaChave);
 
     constexpr std::string_view URIBenPatrimonial = "benpatrimonial";
     constexpr std::string_view URIEscultura = "escultura";

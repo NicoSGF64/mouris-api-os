@@ -1,5 +1,6 @@
 #ifndef PARSEADORLINEACOMANDOS_H
 #define PARSEADORLINEACOMANDOS_H
+#include <optional>
 #include <stdexcept>
 #include <string>
 
@@ -8,13 +9,13 @@ struct OpcionsPrograma
     std::string rutaCertificado;
     std::string rutaChave;
     std::string datosDSN;
-    static constexpr unsigned short numeroParametrosEsenciais = 0;
+    std::optional<unsigned int> porto;
+    static constexpr unsigned short numeroParametrosEsenciais = 3;
 };
 
 class ErroSenParametroEsencial : public std::runtime_error
 {
-public:
-    explicit ErroSenParametroEsencial(const std::string& what_arg) : std::runtime_error(what_arg) {};
+    using std::runtime_error::runtime_error;
 };
 
 class ParseadorLineaComandos
@@ -24,6 +25,7 @@ public:
     OpcionsPrograma obterOpcions(int argc, char *argv[]);
 private:
     constexpr std::string configurarOpcion(char *lineacomandos[], int& posicion);
+    unsigned int configurarValor(char *lineacomandos[], int& posicion);
 };
 
 #endif // PARSEADORLINEACOMANDOS_H

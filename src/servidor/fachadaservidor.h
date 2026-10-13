@@ -10,6 +10,7 @@ class FachadaServidor : public IServidor
 public:
     FachadaServidor() = delete;
     FachadaServidor(const std::string &rutaCertificado, const std::string &rutaChave);
+    FachadaServidor(const std::string &rutaCertificado, const std::string &rutaChave, unsigned int porto);
     ~FachadaServidor() override;
 
     std::unordered_map<std::string, Sesion> &getConexions() override;
@@ -24,7 +25,7 @@ public:
 
     void atenderPeticions();
 
-    static constexpr unsigned short porto = 8080;
+    unsigned int porto = 8080;
 
 private:
     std::string rutaCertificado;

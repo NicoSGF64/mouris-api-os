@@ -14,7 +14,7 @@ OpcionsPrograma ParseadorLineaComandos::obterOpcions(int argc, char *argv[])
 
     // i = 1 ao non necesitar o nome do arquivo
     for (int i = 1; i < argc; i++)
-    {
+    {        
         // Porque para comprobar
         if(i + 1 == argc)
             break;
@@ -36,6 +36,10 @@ OpcionsPrograma ParseadorLineaComandos::obterOpcions(int argc, char *argv[])
             }
 
             opcions.datosDSN.pop_back();
+        }
+        else if(std::strcmp(argv[i], "-p" ) == 0 || std::strcmp(argv[i], "--porto"))
+        {
+            opcions.porto = configurarValor(argv, i);
         }
         else
         {
@@ -60,4 +64,10 @@ constexpr std::string ParseadorLineaComandos::configurarOpcion(char *lineacomand
 {
     posicion++;
     return lineacomandos[posicion];
+}
+
+unsigned int ParseadorLineaComandos::configurarValor(char *lineacomandos[], int &posicion)
+{
+    posicion++;
+    return std::stoi(lineacomandos[posicion]);
 }

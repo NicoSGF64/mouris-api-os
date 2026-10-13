@@ -7,8 +7,12 @@
 FachadaServidor::FachadaServidor(const std::string &rutaCertificado, const std::string &rutaChave) : rutaCertificado(rutaCertificado),
     rutaChave(rutaChave), servidor(rutaCertificado.c_str(), rutaChave.c_str())
 {
-
     fioInvalidacions = std::thread(&FachadaServidor::invalidarSesions, this);
+}
+
+FachadaServidor::FachadaServidor(const std::string &rutaCertificado, const std::string &rutaChave, unsigned int porto) : FachadaServidor(rutaCertificado, rutaChave)
+{
+    this->porto = porto;
 }
 
 FachadaServidor::~FachadaServidor()
