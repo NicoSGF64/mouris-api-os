@@ -104,7 +104,20 @@ Deseño</h1>
 <p>O programa usa extensivamente as librarías <a href="https://nanodbc.github.io/nanodbc/">nanodbc</a> para poder facer a conectividade á base de datos e <a href="https://yhirose.github.io/cpp-httplib/en/">cpp-httplib</a> para xestionar as conexións e o manexo de datos a través de HTTPS.</p>
 <h1><a class="anchor" id="autotoc_md204"></a>
 Uso</h1>
-<p>Os xeitos de acceder e manipular cada obxecto está recollido na súa páxina correspondente. Para toda consulta, é necesario <a class="el" href="md_docs_sesion.html">iniciar sesión</a> e mandar no campo HTTP de <code>Authorization</code> de tipo <code>Basic</code> o nome de usuario e contrasinal. </p>
+<p>Os xeitos de acceder e manipular cada obxecto está recollido na súa páxina correspondente. Para toda consulta, é necesario <a class="el" href="md_docs_sesion.html">iniciar sesión</a> e mandar no campo HTTP de <code>Authorization</code> de tipo <code>Basic</code> o nome de usuario e contrasinal.</p>
+<p>O programa recoñece as seguintes opcións da liña de comandos:</p>
+<ul>
+<li><code>-b</code>/<code>--dsn</code> (<b>Requirido</b>): Ruta ao arquivo que contén a configuración co <a href="https://www.connectionstrings.com/">connectionstring</a> sen comiñas e cun parámetro por liña, tal coma no exemplo:</li>
+</ul>
+<div class="fragment"><div class="line">Driver={PostgreSQL UNICODE}</div>
+<div class="line">Server=api.example.com</div>
+<div class="line">Port=5432</div>
+<div class="line">Database=baseExemplo</div>
+</div><!-- fragment --><ul>
+<li><code>-c</code>/<code>--certificado</code> (<b>Requirido</b>): Ruta ao arquivo que contén o certificado SSL a usar para o aplicativo.</li>
+<li><code>-k</code>/<code>--chave</code> (<b>Requirido</b>): Ruta ao arquivo que contén a chave SSL a usar para o aplicativo.</li>
+<li><code>p</code>/<code>--porto</code>: número de porto a usar. Por defecto úsase o porto 8080. </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
