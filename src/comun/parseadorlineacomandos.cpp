@@ -38,13 +38,9 @@ OpcionsPrograma ParseadorLineaComandos::obterOpcions(int argc, char *argv[])
             opcions.datosDSN.pop_back();
         }
         else if(std::strcmp(argv[i], "-p" ) == 0 || std::strcmp(argv[i], "--porto"))
-        {
             opcions.porto = configurarValor(argv, i);
-        }
         else
-        {
             std::cout << "Opción de comados descoñecida: " << argv[i] << '\n';
-        }
     }
 
     std::array<std::string_view, 3> valores{opcions.rutaChave, opcions.rutaChave, opcions.datosDSN};

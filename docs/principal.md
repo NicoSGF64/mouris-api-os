@@ -16,3 +16,18 @@ O programa usa extensivamente as librarías [nanodbc](https://nanodbc.github.io/
 ## Uso
 
 Os xeitos de acceder e manipular cada obxecto está recollido na súa páxina correspondente. Para toda consulta, é necesario [iniciar sesión](sesion.md) e mandar no campo HTTP de `Authorization` de tipo `Basic` o nome de usuario e contrasinal.
+
+O programa recoñece as seguintes opcións da liña de comandos:
+
+- `-b`/`--dsn` (**Requirido**): Ruta ao arquivo que contén a configuración co [connectionstring](https://www.connectionstrings.com/) sen comiñas e cun parámetro por liña, tal coma no exemplo:
+
+```
+Driver={PostgreSQL UNICODE}
+Server=api.example.com
+Port=5432
+Database=baseExemplo
+```
+
+- `-c`/`--certificado` (**Requirido**): Ruta ao arquivo que contén o certificado SSL a usar para o aplicativo.
+- `-k`/`--chave` (**Requirido**): Ruta ao arquivo que contén a chave SSL a usar para o aplicativo.
+- `p`/`--porto`: número de porto a usar. Por defecto úsase o porto 8080.
